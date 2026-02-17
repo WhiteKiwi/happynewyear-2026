@@ -138,7 +138,12 @@ export default function LetterView() {
                 transition={{ delay: 0.3 }}
                 className="text-left"
               >
-                <p className="text-lg font-medium text-gray-800">{letterData.receiverLine}</p>
+                <p
+                  className="text-lg font-medium text-gray-800"
+                  style={{ fontFamily: 'KOTRA_SONGEULSSI, cursive' }}
+                >
+                  {letterData.receiverLine}
+                </p>
               </motion.div>
 
               {/* 편지 내용 */}
@@ -163,7 +168,12 @@ export default function LetterView() {
                 transition={{ delay: 0.7 }}
                 className="text-right"
               >
-                <p className="text-sm text-gray-500">2026년 2월 17일</p>
+                <p
+                  className="text-sm text-gray-500"
+                  style={{ fontFamily: 'KOTRA_SONGEULSSI, cursive' }}
+                >
+                  2026년 2월 17일
+                </p>
               </motion.div>
 
               {/* 발신인 */}
@@ -173,7 +183,12 @@ export default function LetterView() {
                 transition={{ delay: 0.8 }}
                 className="text-right"
               >
-                <p className="text-lg font-medium text-gray-800">{letterData.senderLine}</p>
+                <p
+                  className="text-lg font-medium text-gray-800"
+                  style={{ fontFamily: 'KOTRA_SONGEULSSI, cursive' }}
+                >
+                  {letterData.senderLine}
+                </p>
               </motion.div>
 
               {/* 버튼들 */}
