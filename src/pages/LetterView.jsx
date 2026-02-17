@@ -17,10 +17,11 @@ export default function LetterView() {
 
     if (encodedData) {
       try {
-        // base64url 디코딩 (URL safe)
+        // base64url 디코딩 (URL safe, 하위 호환성 지원)
         let base64 = encodedData
-          .replace(/-/g, '+')  // - → +
-          .replace(/_/g, '/')  // _ → /
+          .replace(/\./g, '+')  // . → + (새로운 방식)
+          .replace(/-/g, '+')   // - → + (기존 링크 호환)
+          .replace(/_/g, '/')   // _ → /
 
         // 패딩 복원
         while (base64.length % 4) {

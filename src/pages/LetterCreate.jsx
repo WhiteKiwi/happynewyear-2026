@@ -26,7 +26,7 @@ export default function LetterCreate() {
     // JSON을 base64url로 인코딩 (URL safe)
     const jsonString = JSON.stringify(formData)
     const base64Encoded = btoa(unescape(encodeURIComponent(jsonString)))
-      .replace(/\+/g, '-')  // + → -
+      .replace(/\+/g, '.')  // + → . (새로운 방식)
       .replace(/\//g, '_')  // / → _
       .replace(/=+$/, '')   // 패딩 제거
 
