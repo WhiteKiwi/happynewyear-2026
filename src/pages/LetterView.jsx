@@ -42,6 +42,8 @@ export default function LetterView() {
         await navigator.clipboard.writeText(letterData.senderPhone)
         setShowCopiedToast(true)
         setTimeout(() => setShowCopiedToast(false), 3000)
+        // 전화 스킴 실행
+        window.location.href = `tel:${letterData.senderPhone}`
       } catch (err) {
         console.error('Failed to copy phone number:', err)
       }
