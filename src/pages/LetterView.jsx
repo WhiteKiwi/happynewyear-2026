@@ -204,13 +204,19 @@ export default function LetterView() {
                 </p>
               </motion.div>
 
-              {/* 버튼 */}
+              {/* 버튼들 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
-                className="pt-4"
+                className="flex gap-3 pt-4"
               >
+                <button
+                  onClick={() => navigate('/kiwi')}
+                  className="flex-1 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
+                >
+                  새로 작성하기
+                </button>
                 <button
                   onClick={() => navigate('/kiwi', {
                     state: {
@@ -220,7 +226,7 @@ export default function LetterView() {
                       senderLabel: letterData.receiverLabel,
                     }
                   })}
-                  className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
+                  className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
                 >
                   답신 보내기
                 </button>
@@ -255,6 +261,11 @@ export default function LetterView() {
           )}
         </motion.button>
       )}
+
+      {/* Footer */}
+      <footer className="fixed bottom-4 left-0 right-0 text-center text-sm text-gray-400 z-10">
+        Made with ❤️ by WhiteKiwi
+      </footer>
     </div>
   )
 }

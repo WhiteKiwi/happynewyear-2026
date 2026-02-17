@@ -180,6 +180,11 @@ export default function LetterCreate() {
             </div>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="text-center text-sm text-gray-400 mt-8 pb-4">
+          Made with ❤️ by WhiteKiwi
+        </footer>
       </div>
     </div>
   )
