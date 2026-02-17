@@ -185,7 +185,7 @@ export default function LetterView() {
                   className="text-sm text-gray-500"
                   style={{ fontFamily: 'KOTRA_SONGEULSSI, cursive' }}
                 >
-                  2026년 2월 17일
+                  {letterData.date || '2026년 2월 17일'}
                 </p>
               </motion.div>
 

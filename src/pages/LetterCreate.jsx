@@ -23,8 +23,21 @@ export default function LetterCreate() {
   }
 
   const generateLink = () => {
+    // 현재 날짜 추가
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = today.getMonth() + 1
+    const day = today.getDate()
+    const dateString = `${year}년 ${month}월 ${day}일`
+
+    // 날짜 포함한 데이터 생성
+    const dataWithDate = {
+      ...formData,
+      date: dateString
+    }
+
     // JSON을 base64url로 인코딩 (URL safe)
-    const jsonString = JSON.stringify(formData)
+    const jsonString = JSON.stringify(dataWithDate)
     const base64Encoded = btoa(unescape(encodeURIComponent(jsonString)))
       .replace(/\+/g, '.')  // + → . (새로운 방식)
       .replace(/\//g, '_')  // / → _
