@@ -130,7 +130,6 @@ export default function LetterView() {
               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="bg-white rounded-2xl shadow-2xl p-8 space-y-6"
-              style={{ fontFamily: 'KOTRA_SONGEULSSI, cursive' }}
             >
               {/* 수신자 */}
               <motion.div
@@ -149,7 +148,10 @@ export default function LetterView() {
                 transition={{ delay: 0.5 }}
                 className="py-6 border-y border-gray-200"
               >
-                <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+                <p
+                  className="text-gray-700 whitespace-pre-wrap leading-relaxed"
+                  style={{ fontFamily: 'KOTRA_SONGEULSSI, cursive' }}
+                >
                   {letterData.message}
                 </p>
               </motion.div>
