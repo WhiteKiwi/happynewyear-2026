@@ -8,6 +8,7 @@ export default function LetterView() {
   const [isOpened, setIsOpened] = useState(false)
   const [animationStep, setAnimationStep] = useState(0) // 0: 봉투, 1: 봉투 열림, 2: 편지 튀어나옴, 3: 편지 펼침
   const [showMoneyPopup, setShowMoneyPopup] = useState(false)
+  const [showCopiedToast, setShowCopiedToast] = useState(false)
 
   useEffect(() => {
     // URL에서 f 파라미터 가져오기
@@ -35,9 +36,15 @@ export default function LetterView() {
     }
   }
 
-  const handleCall = () => {
+  const handleCopyPhone = async () => {
     if (letterData?.senderPhone) {
-      window.location.href = `tel:${letterData.senderPhone}`
+      try {
+        await navigator.clipboard.writeText(letterData.senderPhone)
+        setShowCopiedToast(true)
+        setTimeout(() => setShowCopiedToast(false), 3000)
+      } catch (err) {
+        console.error('Failed to copy phone number:', err)
+      }
     }
   }
 
@@ -168,7 +175,7 @@ export default function LetterView() {
                   용돈 보내기
                 </button>
                 <button
-                  onClick={handleCall}
+                  onClick={handleCopyPhone}
                   className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
                 >
                   답신 보내기
@@ -209,7 +216,7 @@ export default function LetterView() {
                           </button>
                           <button
                             onClick={() => {
-                              handleCall()
+                              handleCopyPhone()
                               setShowMoneyPopup(false)
                             }}
                             className="flex-1 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-lg transition-colors"
@@ -222,6 +229,20 @@ export default function LetterView() {
                   </>
                 )}
               </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* 전화번호 복사 토스트 알림 */}
+        <AnimatePresence>
+          {showCopiedToast && (
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+              className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg z-50"
+            >
+              전화번호가 복사되었어요
             </motion.div>
           )}
         </AnimatePresence>
