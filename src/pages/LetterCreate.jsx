@@ -23,9 +23,12 @@ export default function LetterCreate() {
   }
 
   const generateLink = () => {
-    // JSON을 base64로 인코딩
+    // JSON을 base64url로 인코딩 (URL safe)
     const jsonString = JSON.stringify(formData)
     const base64Encoded = btoa(unescape(encodeURIComponent(jsonString)))
+      .replace(/\+/g, '-')  // + → -
+      .replace(/\//g, '_')  // / → _
+      .replace(/=+$/, '')   // 패딩 제거
 
     // URL 생성
     const url = `https://happynewyear-2026.whitekiwi.link/?f=${base64Encoded}`
