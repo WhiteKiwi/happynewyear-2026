@@ -17,17 +17,9 @@
   "receiverLine": "김토스 님께",
   "message": "편지 내용...\n.......",
   "senderLine": "장키위 올림",
-  "senderPhone": "01012345678",
-  "font": "nanum-pen"
+  "senderPhone": "01012345678"
 }
 ```
-
-**사용 가능한 폰트:**
-- `nanum-pen`: Nanum Pen Script (기본)
-- `gamja`: Gamja Flower
-- `poor-story`: Poor Story
-- `single-day`: Single Day
-- `nanum-brush`: Nanum Brush Script
 
 ## 기능 요구사항
 
@@ -60,9 +52,9 @@
    - 편지 내용 (message)
    - 발신인 (senderLine)
    - 전화번호 (senderPhone)
-   - 폰트 선택 (5가지 손글씨 폰트 중 선택, 각 폰트 미리보기 제공)
 9. 입력 완료 후 "링크 복사" 버튼을 누르면 base64로 인코딩된 URL이 클립보드에 복사됨
    - 예: `https://happynewyear-2026.whitekiwi.link/?f=eyJyZWNlaXZlckxpbmUi...`
+10. 모든 편지는 코트라 손글씨체로 표시됨
 
 ## 프로젝트 구조
 

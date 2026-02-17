@@ -1,20 +1,11 @@
 import { useState } from 'react'
 
-const FONTS = [
-  { name: 'Nanum Pen Script', value: 'nanum-pen', style: 'Nanum Pen Script' },
-  { name: 'Gamja Flower', value: 'gamja', style: 'Gamja Flower' },
-  { name: 'Poor Story', value: 'poor-story', style: 'Poor Story' },
-  { name: 'Single Day', value: 'single-day', style: 'Single Day' },
-  { name: 'Nanum Brush Script', value: 'nanum-brush', style: 'Nanum Brush Script' },
-]
-
 export default function LetterCreate() {
   const [formData, setFormData] = useState({
     receiverLine: '',
     message: '',
     senderLine: '',
     senderPhone: '',
-    font: 'nanum-pen',
   })
   const [copied, setCopied] = useState(false)
 
@@ -121,39 +112,6 @@ export default function LetterCreate() {
                 placeholder="예: 01012345678"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
               />
-            </div>
-
-            {/* 폰트 선택 */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                폰트 선택
-              </label>
-              <div className="grid grid-cols-1 gap-3">
-                {FONTS.map((font) => (
-                  <button
-                    key={font.value}
-                    type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, font: font.value }))}
-                    className={`p-4 border-2 rounded-lg transition-all text-left ${
-                      formData.font === font.value
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span
-                        className="text-xl"
-                        style={{ fontFamily: font.style }}
-                      >
-                        {font.name} - 새해 복 많이 받으세요!
-                      </span>
-                      {formData.font === font.value && (
-                        <span className="text-blue-500">✓</span>
-                      )}
-                    </div>
-                  </button>
-                ))}
-              </div>
             </div>
 
             {/* 링크 복사 버튼 */}
