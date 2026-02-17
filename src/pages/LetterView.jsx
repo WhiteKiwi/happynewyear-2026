@@ -221,9 +221,7 @@ export default function LetterView() {
                   onClick={() => navigate('/kiwi', {
                     state: {
                       receiverName: letterData.senderName,
-                      receiverLabel: letterData.senderLabel,
                       senderName: letterData.receiverName,
-                      senderLabel: letterData.receiverLabel,
                     }
                   })}
                   className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
