@@ -153,6 +153,20 @@ export default function LetterCreate() {
               </div>
             </div>
 
+            {/* TinyURL 추천 */}
+            <div className="text-center text-sm text-gray-500">
+              링크가 길 수 있어요.{' '}
+              <a
+                href="https://tinyurl.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-700 underline"
+              >
+                TinyURL
+              </a>
+              {' '}에서 줄이는 것을 추천해요!
+            </div>
+
             {/* 버튼들 */}
             <div className="flex gap-3">
               <button
