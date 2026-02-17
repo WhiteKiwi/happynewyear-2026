@@ -6,9 +6,11 @@ export default function LetterCreate() {
   const prefillData = location.state || {}
 
   const [formData, setFormData] = useState({
-    receiverLine: prefillData.receiverLine || '',
+    receiverName: prefillData.receiverName || '',
+    receiverLabel: prefillData.receiverLabel || '',
     message: '',
-    senderLine: prefillData.senderLine || '',
+    senderName: prefillData.senderName || '',
+    senderLabel: prefillData.senderLabel || '',
     senderPhone: '',
   })
   const [copied, setCopied] = useState(false)
@@ -44,7 +46,7 @@ export default function LetterCreate() {
     }
   }
 
-  const isFormValid = formData.receiverLine && formData.message && formData.senderLine && formData.senderPhone
+  const isFormValid = formData.receiverName && formData.receiverLabel && formData.message && formData.senderName && formData.senderLabel && formData.senderPhone
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 p-4 md:p-8">
@@ -56,18 +58,29 @@ export default function LetterCreate() {
           <div className="space-y-6">
             {/* 수신자 */}
             <div>
-              <label htmlFor="receiverLine" className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 수신자
               </label>
-              <input
-                type="text"
-                id="receiverLine"
-                name="receiverLine"
-                value={formData.receiverLine}
-                onChange={handleChange}
-                placeholder="예: 김토스 님께"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
-              />
+              <div className="grid grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  id="receiverName"
+                  name="receiverName"
+                  value={formData.receiverName}
+                  onChange={handleChange}
+                  placeholder="이름 (예: 김토스)"
+                  className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                />
+                <input
+                  type="text"
+                  id="receiverLabel"
+                  name="receiverLabel"
+                  value={formData.receiverLabel}
+                  onChange={handleChange}
+                  placeholder="표기 (예: 님께)"
+                  className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                />
+              </div>
             </div>
 
             {/* 편지 내용 */}
@@ -88,18 +101,29 @@ export default function LetterCreate() {
 
             {/* 발신인 */}
             <div>
-              <label htmlFor="senderLine" className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 발신인
               </label>
-              <input
-                type="text"
-                id="senderLine"
-                name="senderLine"
-                value={formData.senderLine}
-                onChange={handleChange}
-                placeholder="예: 장키위 올림"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
-              />
+              <div className="grid grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  id="senderName"
+                  name="senderName"
+                  value={formData.senderName}
+                  onChange={handleChange}
+                  placeholder="이름 (예: 장키위)"
+                  className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                />
+                <input
+                  type="text"
+                  id="senderLabel"
+                  name="senderLabel"
+                  value={formData.senderLabel}
+                  onChange={handleChange}
+                  placeholder="표기 (예: 올림)"
+                  className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                />
+              </div>
             </div>
 
             {/* 전화번호 */}

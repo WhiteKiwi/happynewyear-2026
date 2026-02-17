@@ -143,7 +143,7 @@ export default function LetterView() {
                   className="text-lg font-medium text-gray-800"
                   style={{ fontFamily: 'KOTRA_SONGEULSSI, cursive' }}
                 >
-                  {letterData.receiverLine}
+                  {letterData.receiverName} {letterData.receiverLabel}
                 </p>
               </motion.div>
 
@@ -188,7 +188,7 @@ export default function LetterView() {
                   className="text-lg font-medium text-gray-800"
                   style={{ fontFamily: 'KOTRA_SONGEULSSI, cursive' }}
                 >
-                  {letterData.senderLine}
+                  {letterData.senderName} {letterData.senderLabel}
                 </p>
               </motion.div>
 
@@ -208,8 +208,10 @@ export default function LetterView() {
                 <button
                   onClick={() => navigate('/kiwi', {
                     state: {
-                      receiverLine: letterData.senderLine,
-                      senderLine: letterData.receiverLine,
+                      receiverName: letterData.senderName,
+                      receiverLabel: letterData.senderLabel,
+                      senderName: letterData.receiverName,
+                      senderLabel: letterData.receiverLabel,
                     }
                   })}
                   className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"

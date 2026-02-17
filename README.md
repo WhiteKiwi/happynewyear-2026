@@ -14,9 +14,11 @@
 
 ```json
 {
-  "receiverLine": "김토스 님께",
+  "receiverName": "김토스",
+  "receiverLabel": "님께",
   "message": "편지 내용...\n.......",
-  "senderLine": "장키위 올림",
+  "senderName": "장키위",
+  "senderLabel": "올림",
   "senderPhone": "01012345678"
 }
 ```
@@ -47,9 +49,11 @@
 
 7. `/kiwi` 경로로 접근하면 편지 작성 창이 나타남
 8. 작성 폼에서 다음 항목을 입력:
-   - 수신자 (receiverLine)
+   - 수신자 이름 (receiverName)
+   - 수신자 표기 (receiverLabel)
    - 편지 내용 (message)
-   - 발신인 (senderLine)
+   - 발신인 이름 (senderName)
+   - 발신인 표기 (senderLabel)
    - 전화번호 (senderPhone)
 9. 입력 완료 후 "링크 복사" 버튼을 누르면 base64로 인코딩된 URL이 클립보드에 복사됨
    - 예: `https://happynewyear-2026.whitekiwi.link/?f=eyJyZWNlaXZlckxpbmUi...`
