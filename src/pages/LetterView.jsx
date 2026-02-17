@@ -230,23 +230,15 @@ export default function LetterView() {
                           용돈은 마음만 받을게요.<br />밥 사주세요!
                         </p>
 
-                        <div className="flex gap-3">
-                          <button
-                            onClick={() => setShowMoneyPopup(false)}
-                            className="flex-1 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold rounded-lg transition-colors"
-                          >
-                            닫기
-                          </button>
-                          <button
-                            onClick={() => {
-                              window.location.href = 'kakaotalk://'
-                              setShowMoneyPopup(false)
-                            }}
-                            className="flex-1 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-lg transition-colors"
-                          >
-                            생각난 김에 연락하러 가기
-                          </button>
-                        </div>
+                        <button
+                          onClick={() => {
+                            window.location.href = 'kakaotalk://'
+                            setShowMoneyPopup(false)
+                          }}
+                          className="w-full py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-lg transition-colors"
+                        >
+                          생각난 김에 연락하러 가기
+                        </button>
                       </div>
                     </motion.div>
                   </>
