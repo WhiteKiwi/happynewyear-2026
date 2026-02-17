@@ -11,7 +11,6 @@ export default function LetterCreate() {
     message: '',
     senderName: prefillData.senderName || '',
     senderLabel: prefillData.senderLabel || '드림',
-    senderPhone: '',
   })
   const [copied, setCopied] = useState(false)
 
@@ -46,7 +45,7 @@ export default function LetterCreate() {
     }
   }
 
-  const isFormValid = formData.receiverName && formData.receiverLabel && formData.message && formData.senderName && formData.senderLabel && formData.senderPhone
+  const isFormValid = formData.receiverName && formData.receiverLabel && formData.message && formData.senderName && formData.senderLabel
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 p-4 md:p-8">
@@ -124,22 +123,6 @@ export default function LetterCreate() {
                   className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                 />
               </div>
-            </div>
-
-            {/* 전화번호 */}
-            <div>
-              <label htmlFor="senderPhone" className="block text-sm font-medium text-gray-700 mb-2">
-                전화번호
-              </label>
-              <input
-                type="tel"
-                id="senderPhone"
-                name="senderPhone"
-                value={formData.senderPhone}
-                onChange={handleChange}
-                placeholder="예: 01012345678"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
-              />
             </div>
 
             {/* 링크 복사 버튼 */}

@@ -8,8 +8,6 @@ export default function LetterView() {
   const [letterData, setLetterData] = useState(null)
   const [isOpened, setIsOpened] = useState(false)
   const [animationStep, setAnimationStep] = useState(0) // 0: 봉투, 1: 봉투 열림, 2: 편지 튀어나옴, 3: 편지 펼침
-  const [showMoneyPopup, setShowMoneyPopup] = useState(false)
-  const [showCopiedToast, setShowCopiedToast] = useState(false)
 
   useEffect(() => {
     // URL에서 f 파라미터 가져오기
@@ -34,20 +32,6 @@ export default function LetterView() {
       setTimeout(() => setAnimationStep(1), 100) // 봉투 열림
       setTimeout(() => setAnimationStep(2), 800) // 편지 튀어나옴
       setTimeout(() => setAnimationStep(3), 1600) // 편지 펼침
-    }
-  }
-
-  const handleCopyPhone = async () => {
-    if (letterData?.senderPhone) {
-      try {
-        await navigator.clipboard.writeText(letterData.senderPhone)
-        setShowCopiedToast(true)
-        setTimeout(() => setShowCopiedToast(false), 3000)
-        // 전화 스킴 실행
-        window.location.href = `tel:${letterData.senderPhone}`
-      } catch (err) {
-        console.error('Failed to copy phone number:', err)
-      }
     }
   }
 
@@ -192,19 +176,13 @@ export default function LetterView() {
                 </p>
               </motion.div>
 
-              {/* 버튼들 */}
+              {/* 버튼 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
-                className="flex gap-3 pt-4"
+                className="pt-4"
               >
-                <button
-                  onClick={() => setShowMoneyPopup(true)}
-                  className="flex-1 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-lg transition-colors active:scale-95"
-                >
-                  용돈 보내기
-                </button>
                 <button
                   onClick={() => navigate('/kiwi', {
                     state: {
@@ -214,73 +192,11 @@ export default function LetterView() {
                       senderLabel: letterData.receiverLabel,
                     }
                   })}
-                  className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
+                  className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
                 >
                   답신 보내기
                 </button>
               </motion.div>
-
-              {/* 용돈 보내기 팝업 */}
-              <AnimatePresence>
-                {showMoneyPopup && (
-                  <>
-                    {/* 배경 오버레이 */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setShowMoneyPopup(false)}
-                      className="fixed inset-0 bg-black/50 z-40"
-                    />
-
-                    {/* 팝업 */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                      className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 z-50 w-[90%] max-w-sm"
-                    >
-                      <div className="text-center space-y-6">
-                        <p className="text-2xl font-bold text-gray-800">
-                          용돈은 마음만 받을게요.<br />밥 사주세요!
-                        </p>
-
-                        <div className="flex gap-3">
-                          <button
-                            onClick={() => setShowMoneyPopup(false)}
-                            className="flex-1 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold rounded-lg transition-colors"
-                          >
-                            닫기
-                          </button>
-                          <button
-                            onClick={() => {
-                              handleCopyPhone()
-                              setShowMoneyPopup(false)
-                            }}
-                            className="flex-1 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-lg transition-colors"
-                          >
-                            밥사주기
-                          </button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* 전화번호 복사 토스트 알림 */}
-        <AnimatePresence>
-          {showCopiedToast && (
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
-              className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg z-50"
-            >
-              전화번호가 복사되었어요
             </motion.div>
           )}
         </AnimatePresence>
