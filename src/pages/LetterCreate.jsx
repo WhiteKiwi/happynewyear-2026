@@ -7,10 +7,10 @@ export default function LetterCreate() {
 
   const [formData, setFormData] = useState({
     receiverName: prefillData.receiverName || '',
-    receiverLabel: prefillData.receiverLabel || '',
+    receiverLabel: prefillData.receiverLabel || '님께',
     message: '',
     senderName: prefillData.senderName || '',
-    senderLabel: prefillData.senderLabel || '',
+    senderLabel: prefillData.senderLabel || '드림',
     senderPhone: '',
   })
   const [copied, setCopied] = useState(false)
