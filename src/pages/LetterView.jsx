@@ -162,16 +162,16 @@ export default function LetterView() {
               >
                 <button
                   onClick={handleCall}
-                  className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
-                >
-                  답신 보내기
-                </button>
-                <button
-                  onClick={handleCall}
                   className="flex-1 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-lg transition-colors active:scale-95"
                 >
                   <div className="text-xs mb-0.5">현금 말고 밥으로 사주세요</div>
                   <div className="text-sm">용돈 보내기</div>
+                </button>
+                <button
+                  onClick={handleCall}
+                  className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
+                >
+                  답신 보내기
                 </button>
               </motion.div>
             </motion.div>
