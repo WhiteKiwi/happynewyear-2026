@@ -45,6 +45,31 @@ export default function LetterCreate() {
     }
   }
 
+  const handleShare = async () => {
+    const link = generateLink()
+
+    // Web Share API 지원 확인
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: '새해 편지가 도착했어요!',
+          text: `${formData.senderName}님이 보낸 새해 편지를 확인해보세요`,
+          url: link,
+        })
+      } catch (err) {
+        // 사용자가 취소한 경우 등
+        if (err.name !== 'AbortError') {
+          console.error('Failed to share:', err)
+          // 폴백: 링크 복사
+          handleCopyLink()
+        }
+      }
+    } else {
+      // Web Share API 미지원 시 링크 복사
+      handleCopyLink()
+    }
+  }
+
   const isFormValid = formData.receiverName && formData.receiverLabel && formData.message && formData.senderName && formData.senderLabel
 
   return (
@@ -125,18 +150,31 @@ export default function LetterCreate() {
               </div>
             </div>
 
-            {/* 링크 복사 버튼 */}
-            <button
-              onClick={handleCopyLink}
-              disabled={!isFormValid}
-              className={`w-full py-4 rounded-lg font-semibold text-white transition-all ${
-                isFormValid
-                  ? 'bg-blue-600 hover:bg-blue-700 active:scale-95'
-                  : 'bg-gray-300 cursor-not-allowed'
-              }`}
-            >
-              {copied ? '✓ 링크가 복사되었습니다!' : '링크 복사'}
-            </button>
+            {/* 버튼들 */}
+            <div className="flex gap-3">
+              <button
+                onClick={handleCopyLink}
+                disabled={!isFormValid}
+                className={`flex-1 py-4 rounded-lg font-semibold text-white transition-all ${
+                  isFormValid
+                    ? 'bg-gray-600 hover:bg-gray-700 active:scale-95'
+                    : 'bg-gray-300 cursor-not-allowed'
+                }`}
+              >
+                {copied ? '✓ 복사됨' : '링크 복사'}
+              </button>
+              <button
+                onClick={handleShare}
+                disabled={!isFormValid}
+                className={`flex-1 py-4 rounded-lg font-semibold text-white transition-all ${
+                  isFormValid
+                    ? 'bg-blue-600 hover:bg-blue-700 active:scale-95'
+                    : 'bg-gray-300 cursor-not-allowed'
+                }`}
+              >
+                공유하기
+              </button>
+            </div>
           </div>
         </div>
       </div>
