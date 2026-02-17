@@ -2,6 +2,14 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const FONT_MAP = {
+  'nanum-pen': 'Nanum Pen Script',
+  'gamja': 'Gamja Flower',
+  'poor-story': 'Poor Story',
+  'single-day': 'Single Day',
+  'nanum-brush': 'Nanum Brush Script',
+}
+
 export default function LetterView() {
   const [searchParams] = useSearchParams()
   const [letterData, setLetterData] = useState(null)
@@ -130,6 +138,7 @@ export default function LetterView() {
               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="bg-white rounded-2xl shadow-2xl p-8 space-y-6"
+              style={{ fontFamily: FONT_MAP[letterData.font] || FONT_MAP['nanum-pen'] }}
             >
               {/* 수신자 */}
               <motion.div
