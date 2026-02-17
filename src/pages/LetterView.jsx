@@ -156,11 +156,21 @@ export default function LetterView() {
                 </p>
               </motion.div>
 
-              {/* 발신인 */}
+              {/* 발신일 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
+                className="text-right"
+              >
+                <p className="text-sm text-gray-500">2026년 2월 17일</p>
+              </motion.div>
+
+              {/* 발신인 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
                 className="text-right"
               >
                 <p className="text-lg font-medium text-gray-800">{letterData.senderLine}</p>
