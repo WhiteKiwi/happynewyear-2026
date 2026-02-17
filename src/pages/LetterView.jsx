@@ -136,7 +136,7 @@ export default function LetterView() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-right"
+                className="text-left"
               >
                 <p className="text-lg font-medium text-gray-800">{letterData.receiverLine}</p>
               </motion.div>
