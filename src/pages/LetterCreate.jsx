@@ -1,10 +1,14 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 export default function LetterCreate() {
+  const location = useLocation()
+  const prefillData = location.state || {}
+
   const [formData, setFormData] = useState({
-    receiverLine: '',
+    receiverLine: prefillData.receiverLine || '',
     message: '',
-    senderLine: '',
+    senderLine: prefillData.senderLine || '',
     senderPhone: '',
   })
   const [copied, setCopied] = useState(false)

@@ -206,7 +206,12 @@ export default function LetterView() {
                   용돈 보내기
                 </button>
                 <button
-                  onClick={() => navigate('/kiwi')}
+                  onClick={() => navigate('/kiwi', {
+                    state: {
+                      receiverLine: letterData.senderLine,
+                      senderLine: letterData.receiverLine,
+                    }
+                  })}
                   className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
                 >
                   답신 보내기
