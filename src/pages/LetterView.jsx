@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function LetterView() {
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [letterData, setLetterData] = useState(null)
   const [isOpened, setIsOpened] = useState(false)
@@ -205,7 +206,7 @@ export default function LetterView() {
                   용돈 보내기
                 </button>
                 <button
-                  onClick={handleCopyPhone}
+                  onClick={() => navigate('/kiwi')}
                   className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
                 >
                   답신 보내기
