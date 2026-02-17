@@ -239,7 +239,7 @@ export default function LetterView() {
                           </button>
                           <button
                             onClick={() => {
-                              window.location.href = 'tel:'
+                              window.location.href = 'kakaotalk://'
                               setShowMoneyPopup(false)
                             }}
                             className="flex-1 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-lg transition-colors"
